@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooksStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
-
+import { Link } from 'react-router-dom';
 
 class Home extends Component{
 	
 	componentDidMount(){
 		this.props.fetchBooksStart();
 	}
+
+	
 	renderBooks(){
 		return  this.props.books.map((book) => {
-			return <li key={book.isbn}>{book.title}, {book.shortDescription}</li>
+			//
+			return(
+					<div key={book.isbn} >
+					<Link to={`/orderdetails/${book.isbn}`}> 
+						{book.title}
+					</Link>
+					</div>
+//					<li key={book.isbn} onClick={()=>{this.openBookDetails(book)}}>{book.title}</li>
+
+			)
+			
+			
 		})
 	}
 

@@ -4,14 +4,38 @@ import { fetchOrderDetails } from '../actions/orderDetailsActions';
 import { Helmet } from 'react-helmet';
 
 class OrderDetails extends Component{
-	
+
 	componentDidMount(){
-		this.props.fetchOrderDetails();
+		//this.props.fetchOrderDetails();
 	}
 	renderOrderDetails(){
-		return  this.props.orderDetails.map((details) => {
-			return <li key={details.isbn}>{details.longDescription}</li>
-		})
+		const book = this.props.books.filter(book => book.isbn == this.props.match.params.bookid)[0]
+		console.log("book", book)
+		return  ( book ? <div>
+		
+		{ book.thumbnailUrl ? <img src={book.thumbnailUrl} alt={book.thumbnailUrl} /> : null }
+		<label> BookPrice</label>
+		<br/>
+		{ book.authors ? <label> Author Name {this.getAuthorName(book.authors)}</label> : null }
+		<br/>
+		{ book.pageCount ? <label>  Page Count: {book.pageCount}</label> : null}
+		<br/>
+		{ book.isbn ? <label> ISBN: {book.isbn}</label> : null}
+		<br/>
+		<button> Add to Cart </button>
+		<button> Buy Now </button>
+		
+		<br/>
+		{  book.longDescription ? <label> ISBN: {book.longDescription}</label> : null}
+		</div> : null)
+	}
+	
+	getAuthorName(authors){
+		let authorNames = ""
+		for (let entry of authors) {
+			authorNames = authorNames + entry +", ";
+			}
+		return authorNames;
 	}
 
 	render(){
@@ -30,14 +54,13 @@ class OrderDetails extends Component{
 }
 
 function mapStateToProps(state){
-	return ({orderDetails: state.orderDetails});
+	return ({books: state.books});
 }
-
-function loadData(store){
- return store.dispatch(fetchOrderDetails()); 
-}
+//
+//function loadData(store){
+// return //store.dispatch(fetchOrderDetails()); 
+//}
 
 export default {
-	loadData: loadData,
 	component: connect(mapStateToProps, { fetchOrderDetails }) (OrderDetails)
 }

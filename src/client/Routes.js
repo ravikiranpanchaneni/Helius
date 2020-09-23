@@ -24,7 +24,7 @@ export default [
 			},
 			{
 				...MyOrderDetailsPage,
-				path: '/orderdetails',
+				path: '/orderdetails/:bookid',
 			}
 		]
 	}
