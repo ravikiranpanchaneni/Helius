@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyOrders } from '../actions/myOrdersActions';
+import { fetchOrdersStart } from '../actions/ordersActions';
 import { Helmet } from 'react-helmet';
 
 
 class MyOrdersPage extends Component{
 	
 	componentDidMount(){
-		this.props.fetchMyOrders();
+		this.props.fetchOrdersStart();
 	}
 	renderMyOrders(){
 		return  this.props.myOrders.map((myOrder) => {
@@ -35,10 +35,10 @@ function mapStateToProps(state){
 }
 
 function loadData(store){
- return store.dispatch(fetchMyOrders()); 
+ return store.dispatch(fetchOrdersStart()); 
 }
 
 export default {
 	loadData: loadData,
-	component: connect(mapStateToProps, { fetchMyOrders }) (MyOrdersPage)
+	component: connect(mapStateToProps, { fetchOrdersStart }) (MyOrdersPage)
 }

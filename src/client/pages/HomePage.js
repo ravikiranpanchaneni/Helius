@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchBooks } from '../actions/booksActions';
+import { fetchBooksStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
 
 
 class Home extends Component{
 	
 	componentDidMount(){
-		
-		this.props.fetchBooks();
+		this.props.fetchBooksStart();
 	}
 	renderBooks(){
 		return  this.props.books.map((book) => {
@@ -36,10 +35,10 @@ function mapStateToProps(state){
 }
 
 function loadData(store){
- return store.dispatch(fetchBooks()); 
+ return store.dispatch(fetchBooksStart()); 
 }
 
 export default {
 	loadData: loadData,
-	component: connect(mapStateToProps, { fetchBooks }) (Home)
+	component: connect(mapStateToProps, { fetchBooksStart }) (Home)
 }

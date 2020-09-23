@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.get('*', (req, res)=>{
 	const store = createStore();
 	const promises = matchRoutes(Routes, req.path).map(({route}) => {
-		console.log("route", route);
+		//console.log("route", route);
 		return route.loadData ? route.loadData(store) :  null;
 	})
 	

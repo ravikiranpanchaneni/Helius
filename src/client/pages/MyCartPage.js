@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyCart } from '../actions/cartActions';
+import { fetchCartStart } from '../actions/cartActions';
 import { Helmet } from 'react-helmet';
 
 class Cart extends Component{
 	
 	componentDidMount(){
-		this.props.fetchMyCart();
+		this.props.fetchCartStart();
 	}
 	renderCartItems(){
 		return  this.props.cartItems.map((cartItem) => {
@@ -34,10 +34,10 @@ function mapStateToProps(state){
 }
 
 function loadData(store){
- return store.dispatch(fetchMyCart()); 
+ return store.dispatch(fetchCartStart()); 
 }
 
 export default {
 	loadData: loadData,
-	component: connect(mapStateToProps, { fetchMyCart }) (Cart)
+	component: connect(mapStateToProps, { fetchCartStart }) (Cart)
 }

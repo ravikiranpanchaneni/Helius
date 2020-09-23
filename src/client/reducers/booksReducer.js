@@ -1,10 +1,12 @@
-import { FETCH_BOOKS } from '../actions/booksActions';
+import { actionTypes } from '../actions/booksActions';
 
 export default (state=[], action) =>{
 	switch(action.type){
-	case FETCH_BOOKS: 
-		return action.payload.data;
+	case actionTypes.FETCH_BOOKS_SUCESS: 
+			return action.payload;
 	default: 
 		return state;
+	
+
 	}
 }

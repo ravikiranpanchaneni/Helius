@@ -1,10 +1,12 @@
-import { FETCH_MY_CART } from '../actions/cartActions';
+import { actionTypes } from '../actions/cartActions';
 
 export default (state=[], action) =>{
 	switch(action.type){
-	case FETCH_MY_CART: 
-		return action.payload.data;
+	case actionTypes.FETCH_CART_SUCESS: 
+			return action.payload;
 	default: 
 		return state;
+	
+
 	}
 }
