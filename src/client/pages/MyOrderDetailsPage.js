@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOrderDetails } from '../actions/orderDetailsActions';
+import { addToCartStart, removeFromCartStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 class OrderDetails extends Component{
 
 	componentDidMount(){
 		//this.props.fetchOrderDetails();
 	}
+	
+	addToCart(book){
+		this.props.addToCartStart(book.isbn);
+	}
+	
+	removeFromCart(book){
+		this.props.removeFromCartStart(book.isbn);
+	}
+	
+	showAddToCartOrRemoveFromCart(book){
+		let returnContent = "";
+		if(book.addToCart){
+			returnContent = <button onClick={()=>{this.removeFromCart(book)}}>Remvoe from Cart </button>
+		}else{
+			returnContent = <button onClick={()=>{this.addToCart(book)}}>Add to Cart </button>
+		}
+		return returnContent;
+	}
 	renderOrderDetails(){
 		const book = this.props.books.filter(book => book.isbn == this.props.match.params.bookid)[0]
-		console.log("book", book)
 		return  ( book ? <div>
 		
 		{ book.thumbnailUrl ? <img src={book.thumbnailUrl} alt={book.thumbnailUrl} /> : null }
@@ -22,11 +41,11 @@ class OrderDetails extends Component{
 		<br/>
 		{ book.isbn ? <label> ISBN: {book.isbn}</label> : null}
 		<br/>
-		<button> Add to Cart </button>
-		<button> Buy Now </button>
+		{this.showAddToCartOrRemoveFromCart(book)}
+		<Link to="/cart"> Buy Now  </Link>
 		
 		<br/>
-		{  book.longDescription ? <label> ISBN: {book.longDescription}</label> : null}
+		{  book.longDescription ? <label> {book.longDescription}</label> : null}
 		</div> : null)
 	}
 	
@@ -54,7 +73,7 @@ class OrderDetails extends Component{
 }
 
 function mapStateToProps(state){
-	return ({books: state.books});
+	return ({books: state.books.books});
 }
 //
 //function loadData(store){
@@ -62,5 +81,5 @@ function mapStateToProps(state){
 //}
 
 export default {
-	component: connect(mapStateToProps, { fetchOrderDetails }) (OrderDetails)
+	component: connect(mapStateToProps, { fetchOrderDetails, addToCartStart, removeFromCartStart }) (OrderDetails)
 }

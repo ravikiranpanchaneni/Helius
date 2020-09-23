@@ -1,16 +1,18 @@
 
 export const actionTypes = {
-		FETCH_CART_START: 'fetch_cart_start',
-		FETCH_CART_SUCESS: 'fetch_cart_sucess',
-		FETCH_CART_FAILED: 'fetch_cart_failed'
+		CHECKOUT_CART_START: 'checkout_cart_start',
+		CHECKOUT_CART_SUCESS: 'checkout_cart_sucess',
+		CHECKOUT_CART_FAILED: 'checkout_cart_failed'
 }
 
-export const fetchCartStart = () => ({
-type: actionTypes.FETCH_CART_START
+export const checkoutCartStart = (books, isbnIds) => ({
+type: actionTypes.CHECKOUT_CART_START,
+payload: {books: books, isbnIds: isbnIds}
 });
 
 
-export const fetchCartSucess = (cartItems) => ({
-type: actionTypes.FETCH_CART_SUCESS,
-payload: cartItems
+export const checkoutCartSucess = (payload) =>({
+type: actionTypes.CHECKOUT_CART_SUCESS,
+payload: payload
 });
+

@@ -2,17 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOrdersStart } from '../actions/ordersActions';
 import { Helmet } from 'react-helmet';
+import CartItems from '../components/CartItems'
 
 
 class MyOrdersPage extends Component{
 	
 	componentDidMount(){
-		this.props.fetchOrdersStart();
+		//this.props.fetchOrdersStart();
+	}
+	
+	getOrderedItems(element, index, array){
+		return element.bought==true;
 	}
 	renderMyOrders(){
-		return  this.props.myOrders.map((myOrder) => {
-			return <li key={myOrder.isbn}>{myOrder.title}</li>
-		})
+		
+		console.log("this.props.books orders page", this.props.books)
+		let cartItems = this.props.books.filter(this.getOrderedItems);
+		console.log("cartItems in orders page", cartItems)
+		return  (<ul><CartItems cartItems={cartItems} > </CartItems> </ul>)
 	}
 
 	render(){
@@ -31,14 +38,13 @@ class MyOrdersPage extends Component{
 }
 
 function mapStateToProps(state){
-	return ({myOrders: state.myOrders});
+	return ({books: state.books.books});
 }
 
-function loadData(store){
- return store.dispatch(fetchOrdersStart()); 
-}
+//function loadData(store){
+// return store.dispatch(fetchOrdersStart()); 
+//}
 
 export default {
-	loadData: loadData,
 	component: connect(mapStateToProps, { fetchOrdersStart }) (MyOrdersPage)
 }
