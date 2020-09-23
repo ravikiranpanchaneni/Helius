@@ -43883,9 +43883,9 @@ var _ordersActions = __webpack_require__(129);
 
 var _reactHelmet = __webpack_require__(84);
 
-var _CartItems = __webpack_require__(205);
+var _OrderItems = __webpack_require__(548);
 
-var _CartItems2 = _interopRequireDefault(_CartItems);
+var _OrderItems2 = _interopRequireDefault(_OrderItems);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43919,14 +43919,14 @@ var MyOrdersPage = function (_Component) {
 		value: function renderMyOrders() {
 
 			console.log("this.props.books orders page", this.props.books);
-			var cartItems = this.props.books.filter(this.getOrderedItems);
-			console.log("cartItems in orders page", cartItems);
+			var orderItems = this.props.books.filter(this.getOrderedItems);
+			console.log("cartItems in orders page", orderItems);
 			return _react2.default.createElement(
 				'ul',
 				null,
 				_react2.default.createElement(
-					_CartItems2.default,
-					{ cartItems: cartItems },
+					_OrderItems2.default,
+					{ orderItems: orderItems },
 					' '
 				),
 				' '
@@ -44023,6 +44023,7 @@ var Cart = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).call(this, props));
 
 		_this.checkOut = _this.checkOut.bind(_this);
+		_this.cancelCheckout = _this.cancelCheckout.bind(_this);
 		return _this;
 	}
 
@@ -44034,6 +44035,9 @@ var Cart = function (_Component) {
 	}, {
 		key: 'checkOut',
 		value: function checkOut(total) {
+			if (total <= 0) {
+				return;
+			}
 			var cartItems = this.props.books.filter(this.getCartItems);
 			var len = cartItems.length;
 			var isbnIds = [];
@@ -44047,6 +44051,7 @@ var Cart = function (_Component) {
 		key: 'cancelCheckout',
 		value: function cancelCheckout() {
 			console.log("cancelCheckOut");
+			this.props.history.push('/');
 		}
 	}, {
 		key: 'getCartItems',
@@ -44328,11 +44333,12 @@ var OrderDetails = function (_Component) {
 				'div',
 				null,
 				book.thumbnailUrl ? _react2.default.createElement('img', { src: book.thumbnailUrl, alt: book.thumbnailUrl }) : null,
-				_react2.default.createElement(
+				book.price ? _react2.default.createElement(
 					'label',
 					null,
-					' BookPrice'
-				),
+					' BookPrice ',
+					book.price
+				) : null,
 				_react2.default.createElement('br', null),
 				book.authors ? _react2.default.createElement(
 					'label',
@@ -47551,6 +47557,98 @@ exports.devToolsEnhancer = (
     function() { return function(noop) { return noop; } }
 );
 
+
+/***/ }),
+/* 548 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function OrderItems(props) {
+	return props.orderItems.map(function (orderedItem) {
+
+		return orderedItem ? _react2.default.createElement(
+			'div',
+			{ key: orderedItem.isbn },
+			_react2.default.createElement(
+				'label',
+				null,
+				' Book ordered date '
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				' Status  ',
+				orderedItem.bought ? 'Delivered' : 'Ordered',
+				' '
+			),
+			orderedItem.thumbnailUrl ? _react2.default.createElement('img', { src: orderedItem.thumbnailUrl, alt: orderedItem.thumbnailUrl }) : null,
+			_react2.default.createElement('br', null),
+			orderedItem.title ? _react2.default.createElement(
+				'label',
+				null,
+				' Title ',
+				orderedItem.title
+			) : null,
+			_react2.default.createElement('br', null),
+			orderedItem.authors ? _react2.default.createElement(
+				'label',
+				null,
+				' Author Name ',
+				getAuthorName(orderedItem.authors)
+			) : null,
+			_react2.default.createElement('br', null),
+			orderedItem.price ? _react2.default.createElement(
+				'label',
+				null,
+				' BookPrice ',
+				orderedItem.price
+			) : null
+		) : null;
+	});
+}
+
+function getAuthorName(authors) {
+	var authorNames = "";
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
+
+	try {
+		for (var _iterator = authors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+			var entry = _step.value;
+
+			authorNames = authorNames + entry + ", ";
+		}
+	} catch (err) {
+		_didIteratorError = true;
+		_iteratorError = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion && _iterator.return) {
+				_iterator.return();
+			}
+		} finally {
+			if (_didIteratorError) {
+				throw _iteratorError;
+			}
+		}
+	}
+
+	return authorNames;
+}
+exports.default = OrderItems;
 
 /***/ })
 /******/ ]);

@@ -10,6 +10,7 @@ class Cart extends Component{
 	constructor(props) {
 	    super(props);
 	    this.checkOut = this.checkOut.bind(this);
+	    this.cancelCheckout = this.cancelCheckout.bind(this);
 	  }
 	
 	componentDidMount(){
@@ -17,6 +18,9 @@ class Cart extends Component{
 	}
 	
 	checkOut(total){
+		if(total<=0){
+			return;
+		}
 		let cartItems = this.props.books.filter(this.getCartItems);
 		let len = cartItems.length;
 		let isbnIds = [];
@@ -29,6 +33,7 @@ class Cart extends Component{
 
 	cancelCheckout(){
 		console.log("cancelCheckOut");
+		this.props.history.push('/')
 	}
 	getCartItems(element, index, array){
 		return element.addToCart==true;

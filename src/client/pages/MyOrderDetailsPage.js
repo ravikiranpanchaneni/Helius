@@ -33,7 +33,7 @@ class OrderDetails extends Component{
 		return  ( book ? <div>
 		
 		{ book.thumbnailUrl ? <img src={book.thumbnailUrl} alt={book.thumbnailUrl} /> : null }
-		<label> BookPrice</label>
+		{ book.price ? <label> BookPrice {book.price}</label> : null}
 		<br/>
 		{ book.authors ? <label> Author Name {this.getAuthorName(book.authors)}</label> : null }
 		<br/>

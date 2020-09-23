@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOrdersStart } from '../actions/ordersActions';
 import { Helmet } from 'react-helmet';
-import CartItems from '../components/CartItems'
+import OrderItems from '../components/OrderItems'
 
 
 class MyOrdersPage extends Component{
@@ -17,9 +17,9 @@ class MyOrdersPage extends Component{
 	renderMyOrders(){
 		
 		console.log("this.props.books orders page", this.props.books)
-		let cartItems = this.props.books.filter(this.getOrderedItems);
-		console.log("cartItems in orders page", cartItems)
-		return  (<ul><CartItems cartItems={cartItems} > </CartItems> </ul>)
+		let orderItems = this.props.books.filter(this.getOrderedItems);
+		console.log("cartItems in orders page", orderItems)
+		return  (<ul><OrderItems orderItems={orderItems} > </OrderItems> </ul>)
 	}
 
 	render(){
