@@ -5,7 +5,7 @@ import * as  api from '../api/booksApi';
 function* getBooks(){
 	try{
 		const result  = yield call(api.getBooks);
-		yield put(actions.fetchBooksSucess( result.data.data ))
+		yield put(actions.fetchBooksSucess( result.data ))
 	}catch(e){
 		
 	}

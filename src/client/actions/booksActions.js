@@ -17,11 +17,15 @@ export const fetchBooksStart = () => ({
 type: actionTypes.FETCH_BOOKS_START
 });
 
-
 export const fetchBooksSucess = (books) => ({
 type: actionTypes.FETCH_BOOKS_SUCESS,
 payload: books
 });
+
+export const fetchBooksFailed = () => ({
+	type: actionTypes.FETCH_BOOKS_FAILED,
+	payload: []
+	});
 
 
 export const addToCartStart = (isbn) => ({
@@ -29,18 +33,27 @@ type: actionTypes.ADD_TO_CART_START,
 payload: isbn
 });
 
-export const addToCartSucess = (isbn) => ({
+export const addToCartSucess = (books) => ({
 	type: actionTypes.ADD_TO_CART_SUCESS,
-	payload: isbn
+	payload: books
 	});
 
+export const addToCartFailed = (books) => ({
+	type: actionTypes.ADD_TO_CART_FAILED,
+	payload: books
+	});
 
 export const removeFromCartStart = (isbn) => ({
 type: actionTypes.REMOVE_FROM_CART_START,
 payload: isbn
 });
 
-export const removeFromCartSucess = (isbn) => ({
+export const removeFromCartSucess = (books) => ({
 	type: actionTypes.REMOVE_FROM_CART_SUCESS,
-	payload: isbn
+	payload: books
+	});
+
+export const removeFromCartFailed = (books) => ({
+	type: actionTypes.REMOVE_FROM_CART_FAILED,
+	payload: books
 	});

@@ -15,7 +15,7 @@ export default (state=INITIAL_STATE, action) =>{
 		const addCartbooks = [...state.books]
 		for (var index in addCartbooks) {
 			  if(addCartbooks[index].isbn == action.payload){
-				  addCartbooks[index].addToCart = !(addCartbooks[index].addToCart);
+				  addCartbooks[index].addToCart = true;
 				  break;
 			  }
 			}
@@ -27,7 +27,7 @@ export default (state=INITIAL_STATE, action) =>{
 		const removeCartBooks = [...state.books]
 		for (var index in removeCartBooks) {
 			  if(removeCartBooks[index].isbn == action.payload){
-				  removeCartBooks[index].addToCart = !(removeCartBooks[index].addToCart);
+				  removeCartBooks[index].addToCart = false;
 				  break;
 			  }
 			}

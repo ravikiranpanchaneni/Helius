@@ -11,7 +11,7 @@ const total = caliculateTotal(itemsPrice, tax, shippingPrice);
   <label>  tax: {tax}  </label> <br/>
   <label>  shippingPrice: {shippingPrice}  </label> <br/>
   <label>  total: {total}  </label> <br/>
-  <button onClick={()=>{props.checkOut(total)}}>Check Out </button> <br/>
+  <button onClick={()=>{props.checkOut(total)}} disabled={props.cartItems.length<0 ? 'disabled': ''}>Check Out </button> <br/>
   <button onClick={()=>{props.cancelCheckout()}}>Cancel </button> <br/>
   
 </div>

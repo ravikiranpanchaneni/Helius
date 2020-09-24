@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { checkoutCartStart } from '../actions/cartActions';
+import { fetchBooksStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
 import CartItems from '../components/CartItems'
 import PaymentInfo from '../components/PaymentInfo'
@@ -13,8 +14,16 @@ class Cart extends Component{
 	    this.cancelCheckout = this.cancelCheckout.bind(this);
 	  }
 	
-	componentDidMount(){
-		//this.props.checkoutCartStart();
+	async  componentDidMount(){
+		/**
+		 * getting the data from local file because of the api is not working otherwise the api call in booksApi.js file will get the books dynamically 
+		 * storing it in local storage because of the apis are not available. i will maintain the books in local storage and maintain them using sagas
+		 */
+		if(localStorage.getItem('books')==null){
+			const response = await axios("http://localhost:3000/books.json");
+		    localStorage.setItem('books', JSON.stringify(response.data));
+		}
+		this.props.fetchBooksStart();
 	}
 	
 	checkOut(total){
@@ -27,6 +36,7 @@ class Cart extends Component{
 		for(let i=0; i< len; i++){
 			isbnIds.push(cartItems[i].isbn);
 		}
+		//ugly code need to find a best way
 		this.props.checkoutCartStart( this.props.books, isbnIds)
 		//this.props.history.push('/myorders')
 	}
@@ -40,6 +50,7 @@ class Cart extends Component{
 	}
 	
 	renderCartItems(){
+		
 		let cartItems = this.props.books.filter(this.getCartItems);
 		
 		return (
@@ -51,6 +62,14 @@ class Cart extends Component{
 	}
 
 	render(){
+		
+		//ugly code : need to find a new way
+		console.log("this.props.checkedOut", this.props.checkedOut);
+		if(this.props.checkedOut == true){
+			this.props.history.push('/myorders')
+		}
+		//ugly code ends
+		
 		return(
 		<div>
 		<Helmet>
@@ -66,7 +85,7 @@ class Cart extends Component{
 }
 
 function mapStateToProps(state){
-	return ({books: state.books.books, checkedOut: state.checkedOut});
+	return ({books: state.books.books, checkedOut: state.cartItems.checkedOut});
 }
 
 //function loadData(store){
@@ -74,5 +93,5 @@ function mapStateToProps(state){
 //}
 
 export default {
-	component: connect(mapStateToProps, { checkoutCartStart }) (Cart)
+	component: connect(mapStateToProps, { checkoutCartStart, fetchBooksStart }) (Cart)
 }

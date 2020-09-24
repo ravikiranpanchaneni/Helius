@@ -5,7 +5,7 @@ function OrderItems(props) {
 		 
 return  ( orderedItem ? <div key={orderedItem.isbn}>
 		
-<label> Book ordered date </label>
+{orderedItem.purchaseDate ? <label> Book ordered date {orderedItem.purchaseDate}</label> : null}
 <label> Status  {orderedItem.bought? 'Delivered' : 'Ordered'} </label>
 { orderedItem.thumbnailUrl ? <img src={orderedItem.thumbnailUrl} alt={orderedItem.thumbnailUrl} /> : null }
 		

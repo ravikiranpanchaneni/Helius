@@ -1,5 +1,4 @@
 import {takeEvery, call, fork, put, select} from "redux-saga/effects";
-import { push } from 'react-router-redux';
 import * as actions from "../actions/cartActions";
 import * as  api from '../api/cartApi';
 
@@ -7,7 +6,6 @@ function* checkOutCart(action){
 	try{
 		const result  = yield call(api.checkOutCart, action.payload);
 		yield put(actions.checkoutCartSucess(action.payload))
-		//yield put(push('/myorders')); 
 	}catch(e){
 		
 	}
@@ -16,6 +14,7 @@ function* checkOutCart(action){
 function* watchCheckoutCartStart(){
 	yield takeEvery(actions.actionTypes.CHECKOUT_CART_START, checkOutCart);
 } 
+
 
 const cartSagas = [
 	fork(watchCheckoutCartStart)

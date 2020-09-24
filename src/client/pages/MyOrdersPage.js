@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOrdersStart } from '../actions/ordersActions';
+import { updateCheckOut } from '../actions/cartActions';
+import { fetchBooksStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
 import OrderItems from '../components/OrderItems'
 
 
 class MyOrdersPage extends Component{
 	
-	componentDidMount(){
-		//this.props.fetchOrdersStart();
+	async  componentDidMount(){
+		/**
+		 * getting the data from local file because of the api is not working otherwise the api call in booksApi.js file will get the books dynamically 
+		 * storing it in local storage because of the apis are not available. i will maintain the books in local storage and maintain them using sagas
+		 */
+		if(localStorage.getItem('books')==null){
+			const response = await axios("http://localhost:3000/books.json");
+		    localStorage.setItem('books', JSON.stringify(response.data));
+		}
+		this.props.fetchBooksStart();
+		this.props.updateCheckOut();
 	}
 	
 	getOrderedItems(element, index, array){
@@ -46,5 +57,5 @@ function mapStateToProps(state){
 //}
 
 export default {
-	component: connect(mapStateToProps, { fetchOrdersStart }) (MyOrdersPage)
+	component: connect(mapStateToProps, { fetchOrdersStart, updateCheckOut, fetchBooksStart }) (MyOrdersPage)
 }

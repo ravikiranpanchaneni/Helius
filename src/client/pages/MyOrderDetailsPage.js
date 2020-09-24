@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchOrderDetails } from '../actions/orderDetailsActions';
 import { addToCartStart, removeFromCartStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
@@ -9,6 +8,10 @@ class OrderDetails extends Component{
 
 	componentDidMount(){
 		//this.props.fetchOrderDetails();
+	}
+	goToCart(book){
+		this.props.addToCartStart(book.isbn);
+		this.props.history.push('/cart')
 	}
 	
 	addToCart(book){
@@ -42,7 +45,8 @@ class OrderDetails extends Component{
 		{ book.isbn ? <label> ISBN: {book.isbn}</label> : null}
 		<br/>
 		{this.showAddToCartOrRemoveFromCart(book)}
-		<Link to="/cart"> Buy Now  </Link>
+		
+		<button onClick={()=>{this.goToCart(book)}}>Buy Now </button>
 		
 		<br/>
 		{  book.longDescription ? <label> {book.longDescription}</label> : null}
@@ -81,5 +85,5 @@ function mapStateToProps(state){
 //}
 
 export default {
-	component: connect(mapStateToProps, { fetchOrderDetails, addToCartStart, removeFromCartStart }) (OrderDetails)
+	component: connect(mapStateToProps, { addToCartStart, removeFromCartStart }) (OrderDetails)
 }

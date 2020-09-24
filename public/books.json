@@ -10,9 +10,10 @@
     "authors": ["W. Frank Ableson", "Charlie Collins", "Robi Sen"],
     "categories": ["Open Source", "Mobile"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Android in Action, Second Edition",
@@ -26,9 +27,10 @@
     "authors": ["W. Frank Ableson", "Robi Sen"],
     "categories": ["Java"],
     "price": "100",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Specification by Example",
@@ -40,9 +42,10 @@
     "authors": ["Gojko Adzic"],
     "categories": ["Software Engineering"],
     "price": "400",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Flex 3 in Action",
@@ -55,9 +58,10 @@
     "authors": ["Tariq Ahmed with Jon Hirschi", "Faisal Abid"],
     "categories": ["Internet"],
     "price": "200",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Flex 4 in Action",
@@ -70,9 +74,10 @@
     "authors": ["Tariq Ahmed", "Dan Orlando", "John C. Bland II", "Joel Hooks"],
     "categories": ["Internet"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Collective Intelligence in Action",
@@ -85,9 +90,10 @@
     "authors": ["Satnam Alag"],
     "categories": ["Internet"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Zend Framework in Action",
@@ -101,9 +107,10 @@
     "authors": ["Rob Allen", "Nick Lo", "Steven Brown"],
     "categories": ["Web Development"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Flex on Java",
@@ -117,9 +124,10 @@
     "authors": ["Bernerd Allmon", "Jeremy Anderson"],
     "categories": ["Internet"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Griffon in Action",
@@ -133,9 +141,10 @@
     "authors": ["Andres Almiray", "Danno Ferrin", "", "James Shingler"],
     "categories": ["Java"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "OSGi in Depth",
@@ -149,9 +158,10 @@
     "authors": ["Alexandre de Castro Alves"],
     "categories": ["Java"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Flexible Rails",
@@ -165,9 +175,10 @@
     "authors": ["Peter Armstrong"],
     "categories": ["Web Development"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Hello! Flex 4",
@@ -181,9 +192,10 @@
     "authors": ["Peter Armstrong"],
     "categories": ["Internet"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Coffeehouse",
@@ -197,9 +209,10 @@
     "authors": ["Levi Asher", "Christian Crumlish"],
     "categories": ["Miscellaneous"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Team Foundation Server 2008 in Action",
@@ -212,9 +225,10 @@
     "authors": ["Jamil Azher"],
     "categories": ["Microsoft .NET"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Brownfield Application Development in .NET",
@@ -228,9 +242,10 @@
     "authors": ["Kyle Baley", "Donald Belcham"],
     "categories": ["Microsoft"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "MongoDB in Action",
@@ -244,9 +259,10 @@
     "authors": ["Kyle Banker"],
     "categories": ["Next Generation Databases"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Distributed Application Development with PowerBuilder 6.0",
@@ -258,9 +274,10 @@
     "authors": ["Michael J. Barlotta"],
     "categories": ["PowerBuilder"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Jaguar Development with PowerBuilder 7",
@@ -274,9 +291,10 @@
     "authors": ["Michael Barlotta"],
     "categories": ["PowerBuilder", "Client-Server"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "Taming Jaguar",
@@ -289,9 +307,10 @@
     "authors": ["Michael J. Barlotta", "Jason R. Weiss"],
     "categories": ["PowerBuilder"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   },
   {
     "title": "3D User Interfaces with Java 3D",
@@ -304,9 +323,10 @@
     "authors": ["Jon Barrilleaux"],
     "categories": ["Java", "Computer Graphics"],
     "price": "600",
-    "dateOfPurchase": { "$date": "2009-04-01T00:00:00.000-0700" },
+    
     "addToCart": false,
-    "bought": false
+    "bought": false,
+    "purchaseDate": ""
   }]
 		}
 		

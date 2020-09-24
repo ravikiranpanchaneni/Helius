@@ -3,10 +3,19 @@ import { connect } from 'react-redux';
 import { fetchBooksStart, addToCartStart, removeFromCartStart } from '../actions/booksActions';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Home extends Component{
 	
-	componentDidMount(){
+	async  componentDidMount(){
+		/**
+		 * getting the data from local file because of the api is not working otherwise the api call in booksApi.js file will get the books dynamically 
+		 * storing it in local storage because of the apis are not available. i will maintain the books in local storage and maintain them using sagas
+		 */
+		if(localStorage.getItem('books')==null){
+			const response = await axios("http://localhost:3000/books.json");
+		    localStorage.setItem('books', JSON.stringify(response.data));
+		}
 		this.props.fetchBooksStart();
 	}
 	

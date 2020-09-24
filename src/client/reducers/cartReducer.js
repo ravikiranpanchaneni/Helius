@@ -2,6 +2,8 @@ import { actionTypes } from '../actions/cartActions';
 
 const INITIAL_STATE = {
 		cartItems: [],
+		checkedOut: false,
+		books: []
 };
 
 export default (state=INITIAL_STATE, action) =>{
@@ -12,12 +14,19 @@ export default (state=INITIAL_STATE, action) =>{
 			let isISBNPresent = action.payload.isbnIds.includes(checkOutBooks[index].isbn);
 			  if(isISBNPresent){
 				  checkOutBooks[index].bought = !(checkOutBooks[index].bought);
+				  checkOutBooks[index].addToCart = false;
+				  checkOutBooks[index].purchaseDate = new Date().toDateString();
 			  }
 			}
 		return {
 			...state,
 			books: checkOutBooks,
 			checkedOut: true
+		}
+	case actionTypes.UPDATE_CHECK_OUT_SUCESS: 
+		return {
+			...state,
+			checkedOut: false
 		}
 	default: 
 		return state;
