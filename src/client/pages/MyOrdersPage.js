@@ -26,10 +26,7 @@ class MyOrdersPage extends Component{
 		return element.bought==true;
 	}
 	renderMyOrders(){
-		
-		console.log("this.props.books orders page", this.props.books)
 		let orderItems = this.props.books.filter(this.getOrderedItems);
-		console.log("cartItems in orders page", orderItems)
 		return  (<ul><OrderItems orderItems={orderItems} > </OrderItems> </ul>)
 	}
 

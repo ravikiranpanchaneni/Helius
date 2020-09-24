@@ -11,7 +11,7 @@ export const getBooks = () =>{
 }
 
 export const addToCart = (isbn) =>{
-	console.log("adding to cart", isbn);
+	console.log("adding to cart api", isbn);
 	let addCartbooks = JSON.parse(localStorage.getItem(books)).data;
 	for (var index in addCartbooks) {
 		  if(addCartbooks[index].isbn == isbn){
@@ -25,7 +25,7 @@ export const addToCart = (isbn) =>{
 }
 
 export const removeFromCart = (isbn) =>{
-	console.log("removing from cart", isbn);
+	console.log("removing from cart api", isbn);
 	let addCartbooks = JSON.parse(localStorage.getItem(books)).data;
 	for (var index in addCartbooks) {
 		  if(addCartbooks[index].isbn == isbn){

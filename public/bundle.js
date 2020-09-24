@@ -43847,10 +43847,7 @@ var MyOrdersPage = function (_Component) {
 	}, {
 		key: 'renderMyOrders',
 		value: function renderMyOrders() {
-
-			console.log("this.props.books orders page", this.props.books);
 			var orderItems = this.props.books.filter(this.getOrderedItems);
-			console.log("cartItems in orders page", orderItems);
 			return _react2.default.createElement(
 				'ul',
 				null,
@@ -44112,7 +44109,6 @@ var Cart = function (_Component) {
 	}, {
 		key: 'cancelCheckout',
 		value: function cancelCheckout() {
-			console.log("cancelCheckOut");
 			this.props.history.push('/');
 		}
 	}, {
@@ -44152,7 +44148,6 @@ var Cart = function (_Component) {
 		value: function render() {
 
 			//ugly code : need to find a new way
-			console.log("this.props.checkedOut", this.props.checkedOut);
 			if (this.props.checkedOut == true) {
 				this.props.history.push('/myorders');
 			}
@@ -46252,7 +46247,7 @@ var getBooks = exports.getBooks = function getBooks() {
 };
 
 var addToCart = exports.addToCart = function addToCart(isbn) {
-	console.log("adding to cart", isbn);
+	console.log("adding to cart api", isbn);
 	var addCartbooks = JSON.parse(localStorage.getItem(books)).data;
 	for (var index in addCartbooks) {
 		if (addCartbooks[index].isbn == isbn) {
@@ -46266,7 +46261,7 @@ var addToCart = exports.addToCart = function addToCart(isbn) {
 };
 
 var removeFromCart = exports.removeFromCart = function removeFromCart(isbn) {
-	console.log("removing from cart", isbn);
+	console.log("removing from cart api", isbn);
 	var addCartbooks = JSON.parse(localStorage.getItem(books)).data;
 	for (var index in addCartbooks) {
 		if (addCartbooks[index].isbn == isbn) {
@@ -47252,7 +47247,7 @@ var checkOutCart = exports.checkOutCart = function checkOutCart(_ref) {
 	var books = _ref.books,
 	    isbnIds = _ref.isbnIds;
 
-	console.log("checkout books isbns", isbnIds);
+	console.log("checkout books isbns api ", isbnIds);
 	var checkOutBooks = JSON.parse(localStorage.getItem(cartBooks)).data;
 	for (var index in checkOutBooks) {
 		var isISBNPresent = isbnIds.includes(checkOutBooks[index].isbn);

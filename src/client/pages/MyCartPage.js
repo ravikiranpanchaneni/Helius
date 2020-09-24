@@ -42,7 +42,6 @@ class Cart extends Component{
 	}
 
 	cancelCheckout(){
-		console.log("cancelCheckOut");
 		this.props.history.push('/')
 	}
 	getCartItems(element, index, array){
@@ -64,7 +63,6 @@ class Cart extends Component{
 	render(){
 		
 		//ugly code : need to find a new way
-		console.log("this.props.checkedOut", this.props.checkedOut);
 		if(this.props.checkedOut == true){
 			this.props.history.push('/myorders')
 		}

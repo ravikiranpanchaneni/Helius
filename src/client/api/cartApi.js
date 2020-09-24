@@ -6,7 +6,7 @@ let cartBooks: string = 'books';  //hard coded value because of no api present
 let api: string = "http://localhost:3000/books.json"; // hard coded value api url 
 
 export const checkOutCart = ({books, isbnIds}) =>{
-	console.log("checkout books isbns", isbnIds);
+	console.log("checkout books isbns api ", isbnIds);
 	let checkOutBooks = JSON.parse(localStorage.getItem(cartBooks)).data;
 	for (var index in checkOutBooks) {
 		let isISBNPresent = isbnIds.includes(checkOutBooks[index].isbn);
